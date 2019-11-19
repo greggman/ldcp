@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const fs = require('fs');
+const ldcp = require('../src/ldcp');
+
+const args = process.argv.slice(2);
+
+const options = {
+  recurse: false,
+  dryRun: false,
+  verbose: false,
+};
+
+while (args.length && args[0].startsWith('-')) {
+  const opt = args.shift();
+  switch (opt) {
+    case '-v':
+    case '--verbose':
+       options.verbose = true;
+       break;
+    case '--dry-run':
+       options.dryRun = true;
+       options.verbose = true;
+       break;
+    case '-R':
+       options.recurse = true;
+       break;
+    default:
+       console.error('illegal option:', opt);
+       printUsage();
+  }
+}
+
+function printUsage() {
+  console.log('usage: ldcp [-R] src_file dst_file\n       ldcp [-R] src_file ... dst_dir');
+  process.exit(1);
+}
+
+
+let dst = args.pop();
+if (args.length < 1) {
+  printUsage();
+}
+
+const log = options.verbose ? console.log.bind(console) : () => {};
+const api = options.dryRun ? {
+  copyFileSync(src) { fs.statSync(src) },
+  mkdirSync() { },
+  statSync(...args) { return fs.statSync(...args); },
+  readdirSync(...args) { return fs.readdirSync(...args); },
+  log,
+} : {
+  copyFileSync(...args) { return fs.copyFileSync(...args) },
+  mkdirSync(...args) { return fs.mkdirSync(...args); },
+  statSync(...args) { return fs.statSync(...args); },
+  readdirSync(...args) { return fs.readdirSync(...args); },
+  log,
+};
+
+ldcp(args, dst, options, api);
+
+

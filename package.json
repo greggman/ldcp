@@ -1,0 +1,23 @@
+{
+  "name": "ldcp",
+  "version": "0.0.0",
+  "description": "low dependency cp",
+  "main": "src/cp.js",
+  "scripts": {
+    "test": "mocha test/tests"
+  },
+  "bin": {
+    "ldcp": "./bin/ldcp"
+  },
+  "keywords": [
+    "cp",
+    "copy"
+  ],
+  "author": "Gregg Tavares",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}
