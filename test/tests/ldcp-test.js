@@ -158,7 +158,6 @@ describe('ldcp', () => {
       },
     };
     const api = createFSAPI(root);
-    debugger;
     ldcp(['foo/'], 'ghi', {recurse: true}, api);
     assert.deepEqual(root, {
       foo: {
