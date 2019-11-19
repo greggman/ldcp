@@ -1,6 +1,15 @@
 const path = require('path');
+const fs = require('fs');
 
-function ldcp(_srcs, dst, options, api) {
+const defaultAPI = {
+  copyFileSync(...args) { return fs.copyFileSync(...args) },
+  mkdirSync(...args) { return fs.mkdirSync(...args); },
+  statSync(...args) { return fs.statSync(...args); },
+  readdirSync(...args) { return fs.readdirSync(...args); },
+  log() {},
+};
+
+function ldcp(_srcs, dst, options, api = defaultAPI) {
   const {recurse} = options;
 
   // check if dst is or needs to be a directory
