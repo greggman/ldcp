@@ -16,9 +16,10 @@ Like `cp`
 
 
     ```
-    abc
-     +--def.txt
-     +--ghi.txt
+    +-abc
+    | +-def.txt
+    | +-ghi.txt
+    +-xyz
     ```
 
   then
@@ -30,6 +31,9 @@ Like `cp`
   results in
 
     ```
+    +-abc
+    | +-def.txt
+    | +-ghi.txt
     xyz
       +--abc
          +--def.txt
@@ -45,7 +49,46 @@ Like `cp`
   results in
 
     ```
+    +-abc
+    | +-def.txt
+    | +-ghi.txt
+    +-xyz
+      +--def.txt
+      +--ghi.txt
+    ```
+
+  if `xyz` does not exist
+
+  then
+
+    ```
+    ldcp -R abc xyz
+    ```
+
+  results in
+
+    ```
+    +-abc
+    | +-def.txt
+    | +-ghi.txt
     xyz
+      +--def.txt
+      +--ghi.txt
+    ```
+
+  where as
+
+    ```
+    ldcp -R abc/ xyz
+    ```
+
+  results in
+
+    ```
+    +-abc
+    | +-def.txt
+    | +-ghi.txt
+    +-xyz
       +--def.txt
       +--ghi.txt
     ```
@@ -54,7 +97,7 @@ Like `cp`
 
 ```
 ldcp [-R] src_file dst_file
-lcdp [-r] src_file ... dst_directory
+lcdp [-R] src_file ... dst_directory
 ```
 
 ## options
