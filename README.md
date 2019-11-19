@@ -10,6 +10,21 @@ This one is 148 lines and has no dependencies.
 
 It tries to do the same as `cp` though it only supports the `-R` option.
 
+## Usage
+
+```
+ldcp [-R] src_file dst_file
+lcdp [-R] src_file ... dst_directory
+```
+
+## options
+
+* `-R` recursive copy
+
+* `--dry-run` show what it would do
+
+* `--verbose` print what it's doing
+
 Like `cp`
 
 * with just 2 arguments, copies a single file from src to dst
@@ -96,21 +111,6 @@ Like `cp`
       +--def.txt
       +--ghi.txt
     ```
-
-## Usage
-
-```
-ldcp [-R] src_file dst_file
-lcdp [-R] src_file ... dst_directory
-```
-
-## options
-
-* `-R` recursive copy
-
-* `--dry-run` show what it would do
-
-* `--verbose` print what it's doing
 
 ## API
 
