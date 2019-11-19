@@ -14,15 +14,23 @@ function ldcp(_srcs, dst, options, api) {
     needMakeDir = recurse;
   }
 
+  if (!recurse && _srcs.length > 1 && !isDstDirectory) {
+    throw new Error('can not copy multiple files to same dst file');
+  }
+
   const srcs = [];
 
   // handle the case where src ends with / like cp
   for (const src of _srcs) {
-    if (recurse && (src.endsWith('/') || src.endsWith('\\'))) {
-      srcs.push(...api.readdirSync(src).map(f => path.join(src, f)));
-    } else {
-      srcs.push(src);
+    if (recurse) {
+      const srcStat = safeStat(src);
+      if ((needMakeDir && srcStat && srcStat.isDirectory()) || 
+          (src.endsWith('/') || src.endsWith('\\'))) {
+        srcs.push(...api.readdirSync(src).map(f => path.join(src, f)));
+        continue;
+      }
     }
+    srcs.push(src);
   }
 
   const srcDsts = [{srcs, dst, isDstDirectory, needMakeDir}];
@@ -38,7 +46,7 @@ function ldcp(_srcs, dst, options, api) {
     for (const src of srcs) {
       const dstFilename = isDstDirectory ? path.join(dst, path.basename(src)) : dst;
       if (recurse) {
-        const srcStat = fs.statSync(src);
+        const srcStat = api.statSync(src);
         if (srcStat.isDirectory()) {
           srcDsts.push({
               srcs: api.readdirSync(src).map(f => path.join(src, f)),
@@ -56,7 +64,7 @@ function ldcp(_srcs, dst, options, api) {
 
   function safeStat(filename) {
     try {
-      return api.statSync(filename);
+      return api.statSync(filename.replace(/(\\|\/)$/, ''));
     } catch (e) {
       //
     }
