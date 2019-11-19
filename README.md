@@ -1,8 +1,12 @@
 # ldcp (low dependency cp)
 
+[![npm](https://img.shields.io/npm/v/ldcp.svg?style=flat-square)](https://www.npmjs.com/package/ldcp)
+![GitHub](https://img.shields.io/github/license/greggman/ldcp?style=flat-square)
+[![Build Status](https://travis-ci.org/greggman/ldcp.svg?branch=master)](https://travis-ci.org/greggman/ldcp)
+
 Why? Because a popular cp clone in node is 450k lines of JavaScript!!! You read that right. 450,000!!!!
 
-This one is 133 lines and has no dependencies.
+This one is 148 lines and has no dependencies.
 
 It tries to do the same as `cp` though it only supports the `-R` option.
 
