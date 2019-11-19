@@ -4,11 +4,32 @@
 ![GitHub](https://img.shields.io/github/license/greggman/ldcp?style=flat-square)
 [![Build Status](https://travis-ci.org/greggman/ldcp.svg?branch=master)](https://travis-ci.org/greggman/ldcp)
 
-Why? Because a popular cp clone in node is 450k lines of JavaScript!!! You read that right. 450,000!!!!
+Why? Because a popular cp clone in node is 450k lines of JavaScript!!! You read
+that right. 450,000!!!!
 
 This one is 148 lines and has no dependencies.
 
 It tries to do the same as `cp` though it only supports the `-R` option.
+
+## What's the point?
+
+I needed to copy a file as part of my build. I can't use `cp` because that's not
+cross platform (doesn't work on Windows). I'm usually on MacOS but I also run
+Windows and have friends that do dev on Windows. I could have used `grunt` and
+`grunt-contrib-copy` or some other giant build framework but I just wanted to
+add an inline script in `package.json` like
+
+```js
+"scripts": {
+  "build": "rollup && ldcp somefile dist/somefile"
+}
+```
+
+I went looking for an existing solution. I'm sure it exists but the first one I
+found was very popular and also 450k lines of dependencies. Ridiculous! I
+actually solved the issue, copying a single file, with a 4 line .js file but
+just for fun I thought I'd see how much work it would be to write a small `cp`
+clone. This is result.
 
 ## Usage
 
