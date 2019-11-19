@@ -107,3 +107,27 @@ lcdp [-R] src_file ... dst_directory
 * `--dry-run` show what it would do
 
 * `--verbose` print what it's doing
+
+## API
+
+```
+const ldcp = require('ldcp');
+
+ldcp(['src'], 'dst', {recurse: true});
+```
+
+or
+
+```
+const fs = require('fs');
+const ldcp = require('ldcp');
+
+const api = {
+  copyFileSync(...args) { return fs.copyFileSync(...args) },
+  mkdirSync(...args) { return fs.mkdirSync(...args); },
+  statSync(...args) { return fs.statSync(...args); },
+  readdirSync(...args) { return fs.readdirSync(...args); },
+  log(..args) { console.log(...args); },
+};
+ldcp(['src'], 'dst', {recurse: true}, api);
+```
