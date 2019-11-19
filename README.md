@@ -31,6 +31,12 @@ actually solved the issue, copying a single file, with a 4 line .js file but
 just for fun I thought I'd see how much work it would be to write a small `cp`
 clone. This is result.
 
+## Installation
+
+```
+npm install ldcp
+```
+
 ## Usage
 
 ```
