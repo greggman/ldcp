@@ -52,8 +52,10 @@ Like `cp`
 
 ## Usage
 
-   ldcp [-R] src_file dst_file
-   lcdp [-r] src_file ... dst_directory
+```
+ldcp [-R] src_file dst_file
+lcdp [-r] src_file ... dst_directory
+```
 
 ## options
 
