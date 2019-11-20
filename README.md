@@ -4,8 +4,7 @@
 ![GitHub](https://img.shields.io/github/license/greggman/ldcp?style=flat-square)
 [![Build Status](https://travis-ci.org/greggman/ldcp.svg?branch=master)](https://travis-ci.org/greggman/ldcp)
 
-Why? Because a popular cp clone in node is 450k lines of JavaScript!!! You read
-that right. 450,000!!!!
+Why? Because a popular cp clone in node is 46k lines of JavaScript and 197 dependencies!
 
 This one is 148 lines and has no dependencies.
 
@@ -56,9 +55,9 @@ Like `cp`
 
 * with just 2 arguments, copies a single file from src to dst
 
-* with `-R` if the source ends with `/` the contents of source
+* with `-R` if the source ends with `/` it copies the contents of source
 
-  In other words assume have
+  In other words assume you have
 
 
     ```
