@@ -51,7 +51,7 @@ const api = options.dryRun ? {
   statSync(...args) { return fs.statSync(...args); },
   readdirSync(...args) { return fs.readdirSync(...args); },
   log,
-} : api = {
+} : {
   copyFileSync(...args) { return fs.copyFileSync(...args) },
   mkdirSync(...args) { return fs.mkdirSync(...args); },
   statSync(...args) { return fs.statSync(...args); },
