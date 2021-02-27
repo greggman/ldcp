@@ -7,14 +7,18 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Mocha Tests",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/node_modules/.bin/mocha",
+      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
       "args": [
-        "test/tests"
-      ]
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/test/tests"
+      ],
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
