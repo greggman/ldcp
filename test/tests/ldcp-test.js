@@ -7,7 +7,7 @@ describe('ldcp', () => {
 
     function getCWDAndFilename(filePath) {
       let cwd = root;
-      const dirs = filePath.split('/');
+      const dirs = filePath.split(/[\\/]/);
       const filename = dirs.pop();
       for (const dir of dirs) {
         cwd = cwd[dir];

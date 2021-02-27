@@ -49,7 +49,9 @@ function ldcp(_srcs, dst, options, api = defaultAPI) {
 
     if (needMakeDir) {
       api.log('mkdir', dst);
-      api.mkdirSync(dst);
+      //if (!safeStat(dst)) {
+        api.mkdirSync(dst);
+      //}
     }
 
     for (const src of srcs) {

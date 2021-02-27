@@ -23,7 +23,9 @@
   "homepage": "https://github.com/greggman/ldcp#readme",
   "author": "Gregg Tavares",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "glob": "^7.1.6"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.2"
