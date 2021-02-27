@@ -171,4 +171,31 @@ describe('ldcp', () => {
     });
   });
 
+  it('copies existing subfolder to existing folder', () => {
+    const root = {
+      foo: {
+        abc: '987',
+      },
+      ghi: {
+        foo: {
+          abc: '123',
+          def: '456',
+        },
+      },
+    };
+    const api = createFSAPI(root);
+    ldcp(['foo'], 'ghi', {recurse: true}, api);
+    assert.deepEqual(root, {
+      foo: {
+        abc: '987',
+      },
+      ghi: {
+        foo: {
+          abc: '987',
+          def: '456',
+        },
+      },
+    });
+  });
+
 });
